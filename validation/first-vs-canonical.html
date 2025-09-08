@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Validation - First vs Canonical | Invariant</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <style>
+    :root { --accent:#00FF41; --bg:#0a0f1b; --card:#121a27; --muted:#8aa; }
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--bg);color:#e0e0e0;font:16px/1.5 system-ui, Segoe UI, Arial; padding:32px;}
+    .wrap{max-width:1200px;margin:0 auto;}
+    h1{margin:0 0 8px;font-size:32px;color:var(--accent);}
+    .sub{color:#9aa;margin-bottom:24px}
+    .links{margin-bottom:18px}
+    .links a{color:#67e; text-decoration:underline; margin-right:10px}
+    .table{width:100%; border-collapse:separate; border-spacing:0 8px;}
+    .table th{color:#9aa; font-weight:600; text-align:left; font-size:14px; padding:8px 12px;}
+    .row{background:var(--card); border:1px solid rgba(255,255,255,.06); border-radius:12px; overflow:hidden;}
+    .cell{padding:12px 14px; vertical-align:top;}
+    .grid{display:grid; grid-template-columns: 260px 1fr 1fr 160px 120px 160px; gap:0}
+    .badge{display:inline-block; padding:2px 8px; border-radius:999px; font-size:12px; font-weight:600}
+    .ok{background:#0f3320; border:1px solid #1b8a3d; color:#7cf0a2;}
+    .same{background:#1b2330; border:1px solid #2a394e; color:#b8c6d8;}
+    .warn{background:#332b0f; border:1px solid #8a6f1b; color:#f0d47c;}
+    .notes{color:#9bb; font-size:13px}
+    .cell small{color:#9bb; display:block; font-size:12px; margin-top:4px}
+    .cta{margin-top:16px}
+    .cta a{display:inline-block; padding:10px 14px; background:#142035; border:1px solid #2a3d5e; border-radius:8px; color:#bcd; margin-right:8px}
+    .footer{margin-top:28px; font-size:14px; color:#9aa}
+    @media (max-width: 980px){
+      .grid{grid-template-columns: 1fr}
+      .table th{display:none}
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>First vs Canonical - ZeroDrift Validation</h1>
+    <div class="sub">Side-by-side evaluation of the earliest public runs vs the canonical 50k-step ProofKit run.</div>
+
+    <div class="links">
+      <a href="/proof/canonical_run_proof.json">Canonical Proof (JSON)</a>
+      <a href="/papers/Zero_Drift_Neural_Computation.pdf">Research Paper (PDF)</a>
+      <a href="/figures/energy_vs_step.png">Energy vs Step (PNG)</a>
+      <a href="/validation/data/ZeroDrift_first_vs_canonical.csv">Download CSV</a>
+    </div>
+
+    <table class="table" role="table" aria-label="First vs Canonical comparison">
+      <thead>
+        <tr class="grid">
+          <th class="cell">Metric</th>
+          <th class="cell">First Runs</th>
+          <th class="cell">Canonical Run</th>
+          <th class="cell">Change (factor)</th>
+          <th class="cell">Change (%)</th>
+          <th class="cell">Evaluation</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="row grid">
+          <td class="cell">Run length (steps)</td>
+          <td class="cell">~100</td>
+          <td class="cell">50,000</td>
+          <td class="cell">500x</td>
+          <td class="cell">+49,900%</td>
+          <td class="cell"><span class="badge ok">Improved</span><div class="notes">Long-horizon verification</div></td>
+        </tr>
+        <tr class="row grid">
+          <td class="cell">Energy drift (Delta H<sub>rel,max</sub>)</td>
+          <td class="cell">5.27e-13</td>
+          <td class="cell">1.11e-16</td>
+          <td class="cell">~4,748x</td>
+          <td class="cell">+474,700%</td>
+          <td class="cell"><span class="badge ok">Improved</span><div class="notes">True machine-precision</div></td>
+        </tr>
+        <tr class="row grid">
+          <td class="cell">Mass deviation (abs)</td>
+          <td class="cell">~9.13e-14</td>
+          <td class="cell">0.0</td>
+          <td class="cell">-> 0</td>
+          <td class="cell">-</td>
+          <td class="cell"><span class="badge ok">Improved</span></td>
+        </tr>
+        <tr class="row grid">
+          <td class="cell">FSM drift</td>
+          <td class="cell">0.000</td>
+          <td class="cell">0.000</td>
+          <td class="cell">-</td>
+          <td class="cell">-</td>
+          <td class="cell"><span class="badge same">Unchanged</span></td>
+        </tr>
+        <tr class="row grid">
+          <td class="cell">Baseline drift (comparator)</td>
+          <td class="cell">0.976</td>
+          <td class="cell">0.911</td>
+          <td class="cell">1.071x</td>
+          <td class="cell">+7.1%</td>
+          <td class="cell"><span class="badge warn">Baseline improved</span><div class="notes">Slightly reduces contrast vs baseline</div></td>
+        </tr>
+        <tr class="row grid">
+          <td class="cell">Coherence R-bar</td>
+          <td class="cell">~0.962 <small>(from R~0.044 init)</small></td>
+          <td class="cell">~0.962</td>
+          <td class="cell">-</td>
+          <td class="cell">-</td>
+          <td class="cell"><span class="badge same">Unchanged</span><div class="notes">+5.4% ordering confirmed</div></td>
+        </tr>
+        <tr class="row grid">
+          <td class="cell">Lyapunov (largest)</td>
+          <td class="cell">~ 0 / <= 0</td>
+          <td class="cell">~ -1.0e-6</td>
+          <td class="cell">-</td>
+          <td class="cell">-</td>
+          <td class="cell"><span class="badge ok">Improved</span><div class="notes">Contracting (more stable)</div></td>
+        </tr>
+        <tr class="row grid">
+          <td class="cell">Psi-replay error</td>
+          <td class="cell">0.0</td>
+          <td class="cell">0.0</td>
+          <td class="cell">-</td>
+          <td class="cell">-</td>
+          <td class="cell"><span class="badge same">Unchanged</span><div class="notes">Bit-exact determinism</div></td>
+        </tr>
+        <tr class="row grid">
+          <td class="cell">Throughput (samples/sec)</td>
+          <td class="cell">~336.6</td>
+          <td class="cell">~513.0</td>
+          <td class="cell">1.52x</td>
+          <td class="cell">+51.9%</td>
+          <td class="cell"><span class="badge ok">Improved</span></td>
+        </tr>
+        <tr class="row grid">
+          <td class="cell">Latency p50 (ms)</td>
+          <td class="cell">~2.97</td>
+          <td class="cell">~1.625</td>
+          <td class="cell">1.83x</td>
+          <td class="cell">+83.0%</td>
+          <td class="cell"><span class="badge ok">Improved</span><div class="notes">Lower is better</div></td>
+        </tr>
+        <tr class="row grid">
+          <td class="cell">Live topology morphing</td>
+          <td class="cell">chain->strong->ring->grid <small>(+5 swaps)</small></td>
+          <td class="cell">chain->strong->ring->grid</td>
+          <td class="cell">-</td>
+          <td class="cell">-</td>
+          <td class="cell"><span class="badge same">Unchanged</span></td>
+        </tr>
+        <tr class="row grid">
+          <td class="cell">Momentum rescale vector</td>
+          <td class="cell">[1.00075, 0.93583, 1.06777, 0.95738]</td>
+          <td class="cell">Withheld (NDA)</td>
+          <td class="cell">-</td>
+          <td class="cell">-</td>
+          <td class="cell"><span class="badge ok">Improved posture</span><div class="notes">Sensitive details gated</div></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="cta">
+      <a href="/validation/data/ZeroDrift_first_vs_canonical.csv" download>Download CSV</a>
+      <a href="/proof/canonical_run_proof.json">Open Canonical JSON</a>
+    </div>
+
+    <div class="footer">
+      All canonical metrics derive from <code>/proof/canonical_run_proof.json</code> and <code>/papers/Zero_Drift_Neural_Computation.pdf</code>. Early figures reflect the first public "Thermodynamic Self-Organization" runs.
+    </div>
+  </div>
+</body>
+</html>

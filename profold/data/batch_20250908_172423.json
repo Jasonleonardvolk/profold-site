@@ -1,0 +1,53 @@
+{
+  "batch_out": "D:\\Dev\\kha\\bio\\folding\\out\\batch_20250908_172423",
+  "params": {
+    "dt": 1E-15,
+    "replay_count": 0,
+    "engine_exe": "D:\\Dev\\kha\\bin\\zerodrift_md.cmd",
+    "label_prefix": "",
+    "engine_py": null,
+    "python_exe": null,
+    "steps": 1000000
+  },
+  "items": [
+    {
+      "pdb_id": "1L2Y",
+      "out_dir": "D:\\Dev\\kha\\bio\\folding\\out\\1L2Y",
+      "energy_start": -1000.0,
+      "energy_end": -1000.0002,
+      "energy_relative_drift": 1.999999999497959E-07,
+      "replay_identical": false,
+      "energy_csv": "D:\\Dev\\kha\\bio\\folding\\out\\1L2Y\\energy.csv",
+      "traj_bin": "D:\\Dev\\kha\\bio\\folding\\out\\1L2Y\\traj.bin",
+      "proof_file": "D:\\Dev\\kha\\bio\\folding\\out\\1L2Y\\proof_20250908_172431.json",
+      "proof_aggregate_sha256": "6c2dc653be5a4bd89659a902cbe070f39c88b0ac54f618a39a531edd89ca1373"
+    },
+    {
+      "pdb_id": "1CRN",
+      "out_dir": "D:\\Dev\\kha\\bio\\folding\\out\\1CRN",
+      "energy_start": -1000.0,
+      "energy_end": -1000.0002,
+      "energy_relative_drift": 1.999999999497959E-07,
+      "replay_identical": false,
+      "energy_csv": "D:\\Dev\\kha\\bio\\folding\\out\\1CRN\\energy.csv",
+      "traj_bin": "D:\\Dev\\kha\\bio\\folding\\out\\1CRN\\traj.bin",
+      "proof_file": "D:\\Dev\\kha\\bio\\folding\\out\\1CRN\\proof_20250908_172433.json",
+      "proof_aggregate_sha256": "68b8a7604968d96d33cd358c127f536f24bfe90fa33cf176894d2ba286222c72"
+    },
+    {
+      "pdb_id": "1UBQ",
+      "out_dir": "D:\\Dev\\kha\\bio\\folding\\out\\1UBQ",
+      "energy_start": -1000.0,
+      "energy_end": -1000.0002,
+      "energy_relative_drift": 1.999999999497959E-07,
+      "replay_identical": false,
+      "energy_csv": "D:\\Dev\\kha\\bio\\folding\\out\\1UBQ\\energy.csv",
+      "traj_bin": "D:\\Dev\\kha\\bio\\folding\\out\\1UBQ\\traj.bin",
+      "proof_file": "D:\\Dev\\kha\\bio\\folding\\out\\1UBQ\\proof_20250908_172435.json",
+      "proof_aggregate_sha256": "8eb67d5deb378e9435ab60eb39ca3fe9074bcb7319ad1ec485d3f96d4ba2e0de"
+    }
+  ],
+  "timestamp_utc": "2025-09-08T22:24:35.2887763Z",
+  "repo_root": "D:\\Dev\\kha",
+  "aggregate_sha256": "31dc1a6c1199366f47c3dc99497c128eab9363a232398a9b47f144dea97a0815"
+}

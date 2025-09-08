@@ -1,0 +1,34 @@
+#proof-card{max-width:980px;margin:28px auto;padding:16px 18px;border:1px solid #2a2e35;border-radius:14px;background:#0f1319;color:#e6e9ef;font-family:ui-sans-serif,system-ui,Segoe UI,Roboto,Arial}
+#proof-head{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+.badge{display:inline-block;padding:4px 8px;border:1px solid #374151;border-radius:10px;font-size:12px;letter-spacing:.06em;color:#a3adc2}
+#proof-canvas{width:100%;height:280px;background:#0b0d10;border:1px solid #1a1f27;border-radius:10px}
+#proof-topo{width:100%;height:120px;margin-top:8px}
+#proof-ctrls{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.btn{padding:8px 12px;border:1px solid #374151;border-radius:10px;background:#131822;color:#e6e9ef;cursor:pointer}
+.btn:hover{background:#182030}
+.small{font-size:12px;color:#9aa3b2}
+#stat-mode{color:#9aa3b2;font-weight:600}
+#proof-stats{display:flex;flex-wrap:wrap;gap:16px;margin-top:8px;font-family:ui-monospace,Consolas,Menlo,monospace}
+.kv{opacity:.9}
+.kv b{color:#c9d4f1}
+.ok{color:#86efac}
+.bad{color:#fca5a5}
+#spark{width:100%;height:42px;margin-top:8px;border:1px solid #1a1f27;border-radius:8px;background:#0b0d10}
+#livebar{display:flex;align-items:center;gap:8px;margin-top:8px}
+#livebar .dot{width:8px;height:8px;border-radius:50%}
+.green{background:#22c55e}
+.red{background:#ef4444}
+.hidden{display:none}
+.slider{appearance:none;width:220px;height:4px;background:#2a2e35;border-radius:2px;outline:none}
+
+/* === Manifesto / Receipts === */
+#proof-manifesto{max-width:980px;margin:18px auto 36px;padding:18px 20px;border:1px solid #2a2e35;border-radius:14px;background:#0b0d10}
+#proof-manifesto h3{margin:10px 0 8px;font-size:18px;color:#e6e9ef}
+#proof-manifesto p,#proof-manifesto li{color:#c7d0df;line-height:1.55}
+.man-list{margin:8px 0 12px 18px}
+.man-list li{margin:6px 0}
+.pill-row{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 12px}
+.pill{padding:6px 10px;border:1px solid #334155;border-radius:999px;background:#121826;color:#cde1ff;font-weight:600}
+.man-code{background:#0f1319;border:1px solid #1a1f27;border-radius:8px;padding:10px 12px;color:#9bb5ff;font-family:ui-monospace,Consolas,Menlo,monospace}
+#btn-copy-manifesto{margin-top:10px}
+.man-kicker{margin-top:10px;color:#9aa3b2;font-size:12px}

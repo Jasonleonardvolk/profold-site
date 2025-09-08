@@ -1,19 +1,25 @@
 {
+  "batch_id": "batch_20250908_172423",
+  "aggregate_sha256": "31dc1a6c1199366f47c3dc99497c128eab9363a232398a9b47f144dea97a0815",
   "proteins": [
     {
-      "energy_drift": 1.999999999497959E-07,
+      "pdb_id": "1L2Y",
       "verified": true,
-      "pdb_id": "6LU7",
-      "proof_sha256": "a99ce60c37ce5798b1cb333b85ad59c0bf2d701c1334f3898e272b69206c1f09"
+      "energy_drift": 1.999999999497959E-07,
+      "proof_sha256": "6c2dc653be5a4bd89659a902cbe070f39c88b0ac54f618a39a531edd89ca1373"
     },
     {
-      "energy_drift": 1.999999999497959E-07,
+      "pdb_id": "1CRN",
       "verified": true,
-      "pdb_id": "6M0J",
-      "proof_sha256": "0c21fc0368d58d8df1a66e6924d0648ec76c1969fe5b5a1a4bde157cc6a3f865"
+      "energy_drift": 1.999999999497959E-07,
+      "proof_sha256": "68b8a7604968d96d33cd358c127f536f24bfe90fa33cf176894d2ba286222c72"
+    },
+    {
+      "pdb_id": "1UBQ",
+      "verified": true,
+      "energy_drift": 1.999999999497959E-07,
+      "proof_sha256": "8eb67d5deb378e9435ab60eb39ca3fe9074bcb7319ad1ec485d3f96d4ba2e0de"
     }
   ],
-  "aggregate_sha256": "8ab143439e18e3f091b3ac830fec6090cdb2926b3631a19c1968de27f28cea8a",
-  "batch_id": "batch_20250908_164039",
-  "last_update": "2025-09-08T21:51:52.5288889Z"
+  "last_update": "2025-09-08T22:24:35.4622579Z"
 }

@@ -1,21 +1,33 @@
-# Exclude proprietary code
+# Only static web assets - protect proprietary code
 *.exe
 *.dll
+*.so
+*.pyd
 *.bin
-*.pyc
-__pycache__/
-.env
-.venv/
-
-# Exclude sensitive data
-*/private/
-*/sensitive/
-*/proprietary/
-
-# Exclude large files
-*.traj
 *.pdb
 *.zip
-*.tar.gz
+*.tar*
+*.7z
+__pycache__/
+.venv/
+.env
+/private/
+*/proprietary/
+
+# Exclude engine code
+/scripts/
+/bin/
+/python/
+
+# Exclude large trajectory files
+*.traj
+*.out
+*.log
 
 # Keep only website files
+!profold/
+!profold/**
+!index.html
+!robots.txt
+!favicon.ico
+!CNAME

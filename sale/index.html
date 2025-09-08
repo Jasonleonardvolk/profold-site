@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Invariant ZeroDrift - Sealed Bid Sale</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <style>
+    body{background:#0a0f1b;color:#e0e0e0;font:16px/1.5 system-ui,Segoe UI,Arial;margin:0;padding:0}
+    .wrap{max-width:960px;margin:0 auto;padding:40px}
+    h1{color:#00FF41;font-size:2.5rem;margin:0 0 10px}
+    .sub{color:#9aa;margin-bottom:24px}
+    .countdown{font-size:2rem;color:#ff5252;margin:20px 0}
+    .card{background:#121a27;padding:24px;border-radius:12px;margin:20px 0;border:1px solid rgba(255,255,255,0.08)}
+    a.btn{display:inline-block;background:#00FF41;color:#0a0f1b;padding:10px 18px;border-radius:8px;font-weight:600;text-decoration:none;margin-top:12px}
+  </style>
+  <script>
+    const deadline = new Date("2025-09-11T21:00:00-04:00").getTime(); // Sept 11, 9PM EST
+    function tick(){
+      const now=new Date().getTime();
+      const t=deadline-now;
+      if(t<0){document.getElementById("timer").innerHTML="BIDDING CLOSED";return;}
+      const h=Math.floor(t/(1000*60*60));
+      const m=Math.floor((t%(1000*60*60))/(1000*60));
+      const s=Math.floor((t%(1000*60))/1000);
+      document.getElementById("timer").innerHTML=h+"h "+m+"m "+s+"s";
+    }
+    setInterval(tick,1000);
+  </script>
+</head>
+<body onload="tick()">
+  <div class="wrap">
+    <h1>Invariant ZeroDrift - Sealed Bid Auction</h1>
+    <div class="sub">Physics-grade deterministic compute. Patent Pending. ProofKit available under NDA.</div>
+    <div class="countdown" id="timer"></div>
+
+    <div class="card">
+      <h2>How It Works</h2>
+      <ol>
+        <li>Request NDA + ProofKit access (<a href="mailto:bids@invariant.pro">bids@invariant.pro</a>).</li>
+        <li>Submit signed NDA + LOI before deadline.</li>
+        <li>Top bids shortlisted; winner receives exclusivity.</li>
+      </ol>
+    </div>
+
+    <div class="card">
+      <h2>Validation Artifacts</h2>
+      <ul>
+        <li><a href="/papers/Zero_Drift_Neural_Computation.pdf">Research Paper</a></li>
+        <li><a href="/proof/canonical_run_proof.json">Canonical Proof JSON</a></li>
+        <li><a href="/validation/first-vs-canonical.html">First vs Canonical Comparison</a></li>
+      </ul>
+    </div>
+
+    <a class="btn" href="mailto:bids@invariant.pro">Submit Bid</a>
+  </div>
+</body>
+</html>

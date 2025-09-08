@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>INVARIANT — Physics-Grade Determinism (ZeroDrift)</title>
+    <meta name="description" content="Live proof: zero drift (5.27e-13), λ<0, replay hash-verified, live topology swaps. TORI — Powered by ZeroDrift™.">
+    <meta property="og:title" content="Physics-Grade Determinism — Live">
+    <meta property="og:description" content="Run → Replay (hash ✓) → Swap topology (ΔH~0) → Baseline (drift) → FF×32 exact catch-up.">
+    <meta property="og:url" content="https://invariant.pro/">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    
+    <!-- Favicon set -->
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#667eea">
+    <meta name="theme-color" content="#0a0a0a">
+    <link rel="manifest" href="/site.webmanifest">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: #0a0a0a;
+            color: #e0e0e0;
+            min-height: 100vh;
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            line-height: 1.6;
+            padding-top: 3rem;
+        }
+        
+        .container {
+            max-width: 800px;
+            padding: 2rem;
+            text-align: center;
+        }
+        
+        h1 {
+            font-size: 3rem;
+            font-weight: 300;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .tagline {
+            font-size: 1.25rem;
+            color: #888;
+            margin-bottom: 3rem;
+        }
+        
+        .metrics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .metric {
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+        }
+        
+        .metric-value {
+            font-size: 2rem;
+            font-weight: 300;
+            color: #667eea;
+        }
+        
+        .metric-label {
+            font-size: 0.875rem;
+            color: #888;
+            margin-top: 0.25rem;
+        }
+        
+        .patent {
+            background: rgba(102, 126, 234, 0.1);
+            border: 1px solid rgba(102, 126, 234, 0.3);
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            display: inline-block;
+            margin: 2rem 0;
+            font-size: 0.875rem;
+            letter-spacing: 0.05em;
+        }
+        
+        .cta {
+            margin: 3rem 0;
+        }
+        
+        .button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 500;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+        }
+        
+        .contact {
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .contact a {
+            color: #667eea;
+            text-decoration: none;
+        }
+        
+        .contact a:hover {
+            text-decoration: underline;
+        }
+        
+        .sealed-bid {
+            background: rgba(255, 59, 48, 0.1);
+            border: 1px solid rgba(255, 59, 48, 0.3);
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            font-size: 0.875rem;
+        }
+        
+        @media (max-width: 640px) {
+            h1 {
+                font-size: 2rem;
+            }
+            .tagline {
+                font-size: 1rem;
+            }
+            .metrics {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>INVARIANT</h1>
+        <p class="tagline">Physics-Grade AI Proof System</p>
+        <p class="small" style="text-align:center; margin:8px 0 20px; color:#a3adc2">
+            Those Numbers Don't Lie — Conservation 5.27e-13 · λ < 0 · Drift 0.976 → 0.000 · +5.4% coherence
+        </p>
+        
+        <div class="patent">
+            PATENT PENDING — U.S. Provisional Application No. 63/873,397
+        </div>
+        
+        <div class="metrics">
+            <div class="metric">
+                <div class="metric-value">0.0</div>
+                <div class="metric-label">Baseline Drift</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">5.27×10⁻¹³</div>
+                <div class="metric-label">Machine Precision</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">336.6</div>
+                <div class="metric-label">Samples/Second</div>
+            </div>
+        </div>
+        
+        <p style="margin: 2rem 0; font-size: 1.125rem;">
+            Exact Hamiltonian conservation. Live topology swaps. Bit-exact reproducibility.
+        </p>
+        
+        <!-- <div class="sealed-bid">
+            <strong>72-HOUR SEALED BID WINDOW NOW OPEN</strong><br>
+            Acquisition or Exclusive License
+        </div> -->
+        
+        <!-- Validation Strip -->
+        <div class="validation-strip" style="background: #0f1114; border: 1px solid #1b1f24; padding: 1.5rem; border-radius: 12px; margin: 2rem 0;">
+            <h3 style="font-size: 1.1rem; margin-bottom: 1rem; color: #667eea;">Validation Resources</h3>
+            <div style="display: flex; flex-wrap: wrap; gap: 1rem; margin-bottom: 1rem;">
+                <a href="/proof/canonical_run_proof.json" download style="color: #667eea; text-decoration: underline;">📊 Sample Proof (JSON)</a>
+                <a href="/proof/README.md" style="color: #667eea; text-decoration: underline;">📄 Verification Guide</a>
+                <a href="/challenge/" style="color: #667eea; text-decoration: underline;">🏆 Open Challenge</a>
+                <a href="/docs/TORI_Governing_Equation_PUBLIC.pdf" style="color: #667eea; text-decoration: underline;">📚 Technical Appendix</a>
+            </div>
+            <p style="font-size: 0.9rem; color: #888; margin: 0;">Internal validator: Online ✓ | External validator: Pending | Reproducible: Yes</p>
+        </div>
+        
+        <div class="cta">
+            <a href="https://www.youtube.com/watch?v=1KP_OCuv0zY" class="button" target="_blank">
+                Watch 2-Minute Demo
+            </a>
+            <a href="mailto:jason@invariant.pro?subject=TORI%20%E2%80%94%2010-min%20call&body=Name:%0D%0AOrg:%0D%0AWhen%20today:%0D%0A" class="button" style="margin-left: 10px;">
+                Request 10-min call
+            </a>
+        </div>
+        
+        <div class="cta" style="margin-top: 1rem;">
+            <a href="/challenge/" class="button">
+                Open Challenge
+            </a>
+            <a href="/docs/TORI_Governing_Equation_PUBLIC.pdf" class="button" style="margin-left: 10px;">
+                Technical Appendix (PDF)
+            </a>
+        </div>
+        
+        <div class="cta" style="margin-top:20px">
+            <a href="/downloads/TORI_Investor_Pack.zip" class="button">
+                Download Investor Pack
+            </a>
+            <a href="/downloads/TORI_Media_Pack.zip" class="button" style="margin-left: 10px;">
+                Download Media Pack
+            </a>
+        </div>
+        
+        <div class="contact">
+            <h3 style="margin-bottom: 1rem; color: #667eea;">Request Full Access</h3>
+            <form id="access-form" style="max-width: 400px; margin: 0 auto;" onsubmit="handleAccessRequest(event)">
+                <input type="text" name="name" placeholder="Full Name" required style="width: 100%; padding: 0.75rem; margin-bottom: 0.5rem; background: #1a1a1a; border: 1px solid #333; border-radius: 8px; color: #e0e0e0;">
+                <input type="text" name="org" placeholder="Organization" required style="width: 100%; padding: 0.75rem; margin-bottom: 0.5rem; background: #1a1a1a; border: 1px solid #333; border-radius: 8px; color: #e0e0e0;">
+                <input type="email" name="email" placeholder="Work Email" required style="width: 100%; padding: 0.75rem; margin-bottom: 0.5rem; background: #1a1a1a; border: 1px solid #333; border-radius: 8px; color: #e0e0e0;">
+                <textarea name="intent" placeholder="What aspects would you like to verify?" rows="3" required style="width: 100%; padding: 0.75rem; margin-bottom: 1rem; background: #1a1a1a; border: 1px solid #333; border-radius: 8px; color: #e0e0e0; resize: vertical;"></textarea>
+                <button type="submit" class="button" style="width: 100%;">Request NDA &amp; ProofKit Access</button>
+            </form>
+            <p style="margin-top: 2rem; font-size: 0.9rem; color: #888;">
+                General inquiries: <a href="mailto:jason@invariant.pro">jason@invariant.pro</a>
+            </p>
+            <script>
+                function handleAccessRequest(e) {
+                    e.preventDefault();
+                    const form = e.target;
+                    const data = new FormData(form);
+                    const subject = `ProofKit Access Request - ${data.get('org')}`;
+                    const body = `Name: ${data.get('name')}\nOrganization: ${data.get('org')}\nEmail: ${data.get('email')}\n\nVerification Intent:\n${data.get('intent')}`;
+                    window.location.href = `mailto:jason@invariant.pro?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+                    form.reset();
+                    alert('Access request prepared. Your email client will open to send the request.');
+                }
+            </script>
+        </div>
+    </div>
+
+    <!-- Proof Panel Mount -->
+    <div id="proof-panel"></div>
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="/css/proof.css">
+
+    <!-- Core -->
+    <script type="module" src="/js/hash.js"></script>
+    <script type="module" src="/js/zerodrift_engine_fx.js"></script>
+    <script type="module" src="/js/topology_viz.js"></script>
+    <script type="module" src="/js/audio.js"></script>
+    <script type="module" src="/js/proof-export.js"></script>
+    <script type="module" src="/js/proof-panel.js"></script>
+
+    <!-- Live beacon (connects to Railway API) -->
+    <script type="module" src="/js/proof-panel-live.js"></script>
+</body>
+</html>
+

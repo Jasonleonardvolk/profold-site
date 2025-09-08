@@ -1,0 +1,13 @@
+Metric,First Runs,Canonical Run,Change Factor,Change Percent,Evaluation
+Run length (steps),~100,50000,500x,+49900%,Improved
+Energy drift (Delta H_rel max),5.27e-13,1.11e-16,~4748x,+474700%,Improved
+Mass deviation (abs),~9.13e-14,0.0,-> 0,-,Improved
+FSM drift,0.000,0.000,-,-,Unchanged
+Baseline drift (comparator),0.976,0.911,1.071x,+7.1%,Baseline improved
+Coherence R-bar,~0.962,~0.962,-,-,Unchanged
+Lyapunov (largest),~0 / <= 0,~-1.0e-6,-,-,Improved
+Psi-replay error,0.0,0.0,-,-,Unchanged
+Throughput (samples/sec),~336.6,~513.0,1.52x,+51.9%,Improved
+Latency p50 (ms),~2.97,~1.625,1.83x,+83.0%,Improved
+Live topology morphing,chain->strong->ring->grid,chain->strong->ring->grid,-,-,Unchanged
+Momentum rescale vector,"[1.00075, 0.93583, 1.06777, 0.95738]",Withheld (NDA),-,-,Improved posture

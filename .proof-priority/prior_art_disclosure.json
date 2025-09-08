@@ -1,0 +1,70 @@
+{
+  "INVARIANT_FSM_PRIOR_ART": {
+    "timestamp": "2025-09-05T19:00:21.037743Z",
+    "disclosure_hash": "98d4edb36d80fc64255e8693a926bbeb4984ef72d3a5983c9bdb36fcb119cf9a",
+    "proof_hash": "fcb0d81df147dec8a9b49787cb6bed1fab953b0d3cdacc3e05cfaf79a1ae3f17",
+    "code_hash": "4d5f1ee0298785af87d4f17e98ba3e4f61fafd46e7837fd73b15bb8336da10d7",
+    "disclosure": {
+      "invention": "Fractal Soliton Memory (FSM)",
+      "priority_timestamp": "2025-09-05T19:00:21.037743Z",
+      "provisional_patent": "FILED - Enhancement disclosed here",
+      "critical_achievements": {
+        "world_record_drift": "1.41108940538414E-16",
+        "coherence_creation": "+5.4%",
+        "topology_morphs": 4,
+        "improvement_factor": "10^16 over transformers",
+        "production_speed": "485 steps/second"
+      },
+      "claims": [
+        "Neural architecture with drift < 1e-15",
+        "Spontaneous coherence increase in closed system",
+        "Adiabatic topology transformation method",
+        "Gradient degradation elimination (0.00 vs 0.91)",
+        "Energy-lock scaling mechanism",
+        "Thermodynamic anomaly exploitation"
+      ],
+      "proof_metrics": {
+        "steps": 50000,
+        "H0": 0.0030733762675805823,
+        "H_final": 0.0030733762675805828,
+        "mass0": 0.9999999999995794,
+        "mass_final": 0.999999999999579,
+        "max_drift": 2.3988519891530414e-15,
+        "relative_drift": 1.4110894053841422e-16,
+        "mass_conservation": 4.440892098502494e-16,
+        "execution_time_s": 98.65270042419434,
+        "throughput_steps_per_s": 506.828498206397,
+        "cumulative_topology_scaling": 0.002350505432328068
+      },
+      "configuration": {
+        "n": 256,
+        "steps": 50000,
+        "dt": 0.001,
+        "gamma": 0.0,
+        "topologies": [
+          "chain",
+          "strong",
+          "ring",
+          "grid"
+        ],
+        "switch_scheme": "energy-lock",
+        "hilbert": true,
+        "curvature_mode": "optional",
+        "curvature": "present",
+        "prefer": "kretschmann",
+        "phase_gain": 0.15,
+        "kcrit": 6.0,
+        "encoder": "logtanh",
+        "sample_every": 200,
+        "step_batch": 20,
+        "enforce_every": 20,
+        "curvature_every": 100
+      },
+      "files": {
+        "proof": "canonical_run_proof.json",
+        "code": "fractal_soliton_memory.py",
+        "site": "invariant.pro"
+      }
+    }
+  }
+}

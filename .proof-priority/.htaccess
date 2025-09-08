@@ -1,0 +1,20 @@
+# Protect prior art disclosure
+# Accessible but not indexed
+
+# Prevent directory listing
+Options -Indexes
+
+# Prevent search engine indexing
+Header set X-Robots-Tag "noindex, nofollow, noarchive"
+
+# Allow access but discourage crawling
+RewriteEngine On
+RewriteCond %{HTTP_USER_AGENT} (bot|crawl|spider) [NC]
+RewriteRule ^ - [F]
+
+# Cache for proof of timestamp
+Header set Cache-Control "public, max-age=31536000, immutable"
+
+# Add timestamp header
+Header set X-Prior-Art "FSM disclosed 2025-01-05"
+Header set X-Patent "Pending"

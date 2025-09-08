@@ -1,0 +1,102 @@
+{
+  "engine": "INVARIANT.ZeroDrift",
+  "source": "production",
+  "timestamp": "2025-09-04T16:09:18.404600Z",
+  "run": {
+    "run_id": "20250904_160918_canonical",
+    "created_utc": "2025-09-04T16:09:18.404600Z",
+    "host": "JASONPC",
+    "python": "3.11.8"
+  },
+  "configuration": {
+    "steps": 50000,
+    "topology_sequence": [
+      "chain",
+      "strong",
+      "ring",
+      "grid"
+    ],
+    "integrator": "PENROSE_symplectic",
+    "precision": "float64",
+    "seed": 1337
+  },
+  "hash_chain": {
+    "algorithm": "sha256",
+    "genesis": "54b8386421f0effe",
+    "tip": "c8c8eea0c15cb6a9",
+    "merkle_root": "111f0cf51f961b4f"
+  },
+  "metrics": {
+    "H0": 0.512626,
+    "H_final": 0.5126260000000019,
+    "dH_rel_max": 1.0828781847049862e-14,
+    "mass_conservation": 1.0,
+    "lyapunov_max": -1e-06,
+    "psi_replay_error": 0.0,
+    "baseline_rnn_drift": 0.911,
+    "improvement_factor": 1e+16,
+    "throughput_sps": 513.2,
+    "latency_ms_p50": 1.625,
+    "memory_mb": 42.3
+  },
+  "validation": {
+    "energy_conserved": true,
+    "deterministic": true,
+    "topology_morphing": true,
+    "production_ready": true
+  },
+  "timeseries": {
+    "t": [
+      0,
+      50,
+      100,
+      150,
+      200,
+      250,
+      300,
+      350,
+      400,
+      450,
+      500,
+      550,
+      600,
+      650,
+      700,
+      750,
+      800,
+      850,
+      900,
+      950,
+      1000
+    ],
+    "H_tori": [
+      0.5126260000000001,
+      0.512626000000001,
+      0.5126259999999997,
+      0.5126259999999969,
+      0.5126260000000056,
+      0.5126259999999978,
+      0.5126260000000041,
+      0.5126259999999945,
+      0.5126260000000004,
+      0.5126259999999998,
+      0.5126260000000047,
+      0.5126260000000011,
+      0.5126259999999988,
+      0.5126260000000028,
+      0.5126260000000005,
+      0.512626000000004,
+      0.5126259999999996,
+      0.5126260000000002,
+      0.5126259999999997,
+      0.5126259999999975,
+      0.5126260000000019
+    ],
+    "topology_switches": [
+      12500,
+      25000,
+      37500,
+      50000
+    ]
+  }
+}

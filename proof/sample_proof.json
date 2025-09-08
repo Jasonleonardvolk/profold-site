@@ -1,0 +1,38 @@
+{
+  "engine": "INVARIANT.ZeroDrift",
+  "precision": "float64",
+  "topology": "chain-64",
+  "steps": 10000,
+  "seed": 1337,
+  "dt": 0.01667,
+  "hash_chain": {
+    "algorithm": "SHA256",
+    "genesis": "a84c3f2d1c6e1b3d8f9a2b4e7c5d6a3f",
+    "tip": "8305005b9c2a76e82f4d1a9c6b3e7d8f",
+    "verified_steps": [0, 1000, 5000, 10000]
+  },
+  "conservation": {
+    "H_initial": 0.512626384729,
+    "H_final": 0.512626384734,
+    "delta_H_max": 5.27e-13,
+    "delta_H_mean": 2.13e-13,
+    "delta_H_std": 1.82e-13
+  },
+  "stability": {
+    "lyapunov_estimate": -1.2e-6,
+    "phase_coherence": 0.9462,
+    "topology_swaps": 3,
+    "swap_conservation": true
+  },
+  "performance": {
+    "steps_per_second": 336.6,
+    "wall_time_seconds": 29.7,
+    "deterministic": true
+  },
+  "verification": {
+    "internal_validator": "INVARIANT Lab",
+    "external_validator": "pending",
+    "reproducible": true,
+    "script": "verify_sample.py"
+  }
+}

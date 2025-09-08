@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en"><meta charset="utf-8">
+<title>Invariant ZeroDrift — Validation Certificate (2025-09-05)</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<style>
+  body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Arial,sans-serif;max-width:900px;margin:48px auto;padding:0 16px;line-height:1.45}
+  .card{border:1px solid #e5e7eb;border-radius:16px;padding:20px;box-shadow:0 2px 20px rgba(0,0,0,.03)}
+  .k{color:#6b7280;width:220px;display:inline-block}
+  code{background:#f6f8fa;border-radius:6px;padding:2px 6px}
+  h1{margin:0 0 8px 0}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .muted{color:#6b7280}
+</style>
+<body>
+  <h1>ZeroDrift Validation Certificate</h1>
+  <div class="muted">Issued: 2025-09-05 • Publisher: Invariant</div>
+  <p class="card">
+    This certificate attests that the Invariant ZeroDrift engine executed a production validation
+    run under finite-precision arithmetic with <strong>adiabatic topology switching</strong> while conserving the
+    Hamiltonian energy to the machine-precision limit.
+  </p>
+
+  <h2>Canonical Proof Artifacts</h2>
+  <ul>
+    <li>Proof JSON: <code>/proof/canonical_run_proof.json</code></li>
+    <li>Alias: <code>/proof/latest_proof.json</code></li>
+    <li>Figure: <code>/figures/energy_vs_step.png</code></li>
+  </ul>
+
+  <h2>Run Summary (from canonical JSON)</h2>
+  <div class="card">
+    <div><span class="k">Max drift</span><strong>2.39885198915304e-15</strong></div>
+    <div><span class="k">Relative drift</span><strong>1.41108940538414e-16</strong></div>
+    <div><span class="k">Topologies</span><strong>chain → strong → ring → grid</strong></div>
+    <div><span class="k">Energy-lock scalings (g)</span><strong>0.5, 1.0, ~4.701011e-03</strong></div>
+    <div><span class="k">Steps</span><strong>50,000</strong></div>
+    <div><span class="k">Source</span><strong>production</strong></div>
+  </div>
+
+  <h2>Method Constraints</h2>
+  <ul>
+    <li>Real runner only; synthetic/ablation modes disabled</li>
+    <li>Invariant enforcement cadence: <code>--enforce-every 20</code></li>
+    <li>Hilbert pipeline enabled: <code>--hilbert</code></li>
+  </ul>
+
+  <h2>Statement</h2>
+  <p class="card">
+    Within double-precision limits, the system exhibited <strong>zero effective drift</strong> despite live topology
+    morphing. These results are deterministically reproducible from the published proof JSON.
+  </p>
+</body></html>

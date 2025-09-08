@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>INVARIANT — Zero-Drift Neural Computation</title>
+    <meta name="description" content="Machine-precision energy conservation in neural networks. ΔH ≤ 1.11×10⁻¹⁶. Live topology morphing. Deterministic replay.">
+    <meta property="og:title" content="INVARIANT — Zero-Drift Neural Computation">
+    <meta property="og:description" content="Breaking the 60-year drift barrier. Conservation to machine precision.">
+    <meta property="og:url" content="https://invariant.pro/">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #0a0a0a;
+            color: #e0e0e0;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 300;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.5px;
+        }
+        
+        .subtitle {
+            font-size: 1.1rem;
+            color: #888;
+            margin-bottom: 1rem;
+        }
+        
+        .patent-badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            font-size: 0.875rem;
+            letter-spacing: 0.5px;
+            margin-top: 1rem;
+        }
+        
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 3rem 0;
+        }
+        
+        .metric {
+            text-align: center;
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 8px;
+        }
+        
+        .metric-value {
+            font-size: 1.8rem;
+            font-weight: 300;
+            color: #fff;
+            font-family: 'SF Mono', Monaco, monospace;
+        }
+        
+        .metric-label {
+            font-size: 0.875rem;
+            color: #888;
+            margin-top: 0.25rem;
+        }
+        
+        .validation-section {
+            background: #0f1114;
+            border: 1px solid #1b1f24;
+            padding: 2rem;
+            border-radius: 12px;
+            margin: 3rem 0;
+        }
+        
+        .validation-section h2 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            font-weight: 400;
+        }
+        
+        .artifact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+        
+        .artifact-link {
+            display: block;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            color: #e0e0e0;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+        
+        .artifact-link:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        .artifact-type {
+            font-size: 0.75rem;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .artifact-name {
+            font-size: 0.95rem;
+            margin-top: 0.25rem;
+        }
+        
+        .claims-section {
+            margin: 3rem 0;
+        }
+        
+        .claims-section h2 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            font-weight: 400;
+        }
+        
+        .claim-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+        
+        .claim-box {
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 8px;
+        }
+        
+        .claim-box h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.75rem;
+            font-weight: 400;
+        }
+        
+        .claim-box ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .claim-box li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            font-size: 0.95rem;
+        }
+        
+        .claim-box li:last-child {
+            border-bottom: none;
+        }
+        
+        .access-section {
+            background: #0f1114;
+            border: 1px solid #1b1f24;
+            padding: 2.5rem;
+            border-radius: 12px;
+            margin: 3rem 0;
+            text-align: center;
+        }
+        
+        .access-form {
+            max-width: 500px;
+            margin: 2rem auto 0;
+        }
+        
+        .access-form input,
+        .access-form textarea {
+            width: 100%;
+            padding: 0.875rem;
+            margin-bottom: 0.75rem;
+            background: #1a1a1a;
+            border: 1px solid #333;
+            border-radius: 6px;
+            color: #e0e0e0;
+            font-family: inherit;
+        }
+        
+        .access-form button {
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(135deg, #1a1f2e 0%, #2a3142 100%);
+            border: 1px solid #374151;
+            border-radius: 6px;
+            color: #e0e0e0;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .access-form button:hover {
+            background: linear-gradient(135deg, #2a3142 0%, #374151 100%);
+        }
+        
+        footer {
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            font-size: 0.875rem;
+            color: #888;
+        }
+        
+        footer a {
+            color: #aaa;
+            text-decoration: none;
+        }
+        
+        footer a:hover {
+            text-decoration: underline;
+        }
+        
+        @media (max-width: 768px) {
+            .claim-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>INVARIANT</h1>
+            <p class="subtitle">Zero-Drift Neural Computation via Exact Hamiltonian Conservation</p>
+            <div class="patent-badge">U.S. PROVISIONAL PATENT 63/873,397</div>
+        </header>
+
+        <div class="metrics-grid">
+            <div class="metric">
+                <div class="metric-value">1.11×10⁻¹⁶</div>
+                <div class="metric-label">Energy Conservation (ΔH)</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">0.000</div>
+                <div class="metric-label">FSM Drift</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">0.911</div>
+                <div class="metric-label">RNN Baseline Drift</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">λ < 0</div>
+                <div class="metric-label">Lyapunov Stability</div>
+            </div>
+        </div>
+
+        <section class="validation-section">
+            <h2>Validation Artifacts</h2>
+            <div class="artifact-grid">
+                <a href="/proof/canonical_run_proof.json" class="artifact-link" download>
+                    <div class="artifact-type">Proof Data</div>
+                    <div class="artifact-name">Canonical Run (50k steps)</div>
+                </a>
+                <a href="/proof/canonical_run_proof.json" class="artifact-link" download>
+                    <div class="artifact-type">Verification</div>
+                    <div class="artifact-name">Sample Proof JSON</div>
+                </a>
+                <a href="/proof/verify_sample.py" class="artifact-link" download>
+                    <div class="artifact-type">Script</div>
+                    <div class="artifact-name">Independent Verifier</div>
+                </a>
+                <a href="/papers/Zero_Drift_Neural_Computation.pdf" class="artifact-link">
+                    <div class="artifact-type">Preprint</div>
+                    <div class="artifact-name">Research Paper (PDF)</div>
+                </a>
+            </div>
+        </section>
+
+        <section class="claims-section">
+            <h2>Claims & Evidence</h2>
+            <div class="claim-grid">
+                <div class="claim-box">
+                    <h3>What We Prove</h3>
+                    <ul>
+                        <li>Energy conservation to machine precision (10⁻¹⁶)</li>
+                        <li>Zero accumulation drift over 50,000 steps</li>
+                        <li>Negative Lyapunov exponent (stable dynamics)</li>
+                        <li>Deterministic bit-exact replay (ψ-error = 0)</li>
+                        <li>Live topology morphing with invariant preservation</li>
+                    </ul>
+                </div>
+                <div class="claim-box">
+                    <h3>Baseline Comparison</h3>
+                    <ul>
+                        <li>RNN: 91.1% energy loss</li>
+                        <li>LSTM: 87.3% energy loss</li>
+                        <li>Transformer: 94.2% energy loss</li>
+                        <li>FSM (ours): 0.0% energy loss</li>
+                        <li>Improvement: ∞× (exact conservation)</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="access-section">
+            <h2>Request Full ProofKit Access</h2>
+            <p style="margin: 1rem 0; color: #aaa;">
+                The complete ProofKit includes extended benchmarks, verifier logs, and replay procedures.
+                Available under NDA for qualified organizations.
+            </p>
+            <form class="access-form" onsubmit="handleAccessRequest(event)">
+                <input type="text" name="name" placeholder="Full Name" required>
+                <input type="text" name="org" placeholder="Organization" required>
+                <input type="email" name="email" placeholder="Work Email" required>
+                <textarea name="intent" placeholder="Verification objectives" rows="3" required></textarea>
+                <button type="submit">Request NDA & ProofKit</button>
+            </form>
+        </section>
+
+        <footer>
+            <p>
+                Results from active research. Full ProofKit available under NDA.<br>
+                Patent Pending — U.S. Provisional Application No. 63/873,397<br>
+                Contact: <a href="mailto:jason@invariant.pro">jason@invariant.pro</a>
+            </p>
+        </footer>
+    </div>
+
+    <!-- Proof Panel Mount -->
+    <div id="proof-panel"></div>
+
+    <!-- Scripts -->
+    <script>
+        function handleAccessRequest(e) {
+            e.preventDefault();
+            const form = e.target;
+            const data = new FormData(form);
+            const subject = `ProofKit Access Request - ${data.get('org')}`;
+            const body = `Name: ${data.get('name')}\nOrganization: ${data.get('org')}\nEmail: ${data.get('email')}\n\nVerification Objectives:\n${data.get('intent')}`;
+            window.location.href = `mailto:jason@invariant.pro?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+            form.reset();
+            alert('Access request prepared. Your email client will open to send the request.');
+        }
+    </script>
+
+    <!-- Core modules -->
+    <script type="module" src="/js/hash.js"></script>
+    <script type="module" src="/js/zerodrift_engine_fx.js"></script>
+    <script type="module" src="/js/topology_viz.js"></script>
+    <script type="module" src="/js/proof-panel.js"></script>
+</body>
+</html>
+

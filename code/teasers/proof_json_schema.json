@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Canonical Proof JSON (Public-Safe)",
+  "type": "object",
+  "required": ["invariants", "psi_replay", "coherence", "stability", "performance"],
+  "properties": {
+    "invariants": {
+      "type": "object",
+      "required": ["H0", "H_series"],
+      "properties": {
+        "H0": { "type": "number" },
+        "H_series": {
+          "type": "array",
+          "items": { "type": "number" },
+          "minItems": 2
+        }
+      }
+    },
+    "psi_replay": {
+      "type": "object",
+      "required": ["diff"],
+      "properties": {
+        "diff": {
+          "type": "array",
+          "items": { "type": "number" }
+        }
+      }
+    },
+    "coherence": {
+      "type": "object",
+      "required": ["R_series"],
+      "properties": {
+        "R_series": {
+          "type": "array",
+          "items": { "type": "number" }
+        }
+      }
+    },
+    "stability": {
+      "type": "object",
+      "required": ["lambda_max"],
+      "properties": {
+        "lambda_max": { "type": "number" }
+      }
+    },
+    "performance": {
+      "type": "object",
+      "required": ["sps", "latency_p50_ms"],
+      "properties": {
+        "sps": { "type": "number" },
+        "latency_p50_ms": { "type": "number" }
+      }
+    }
+  },
+  "additionalProperties": true
+}

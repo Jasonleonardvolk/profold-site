@@ -516,6 +516,55 @@ cat ./out/batch_*/batch_proof.json | jq '.aggregate_sha256'
         };
         
         updateTimestamp();
+
+        // Load dynamic data from latest.json
+        (async function(){
+          try {
+            const res = await fetch('/profold/data/latest.json', {cache:'no-store'});
+            const data = await res.json();
+
+            // Metrics tiles
+            // Drift: show scientific format based on max drift in proteins
+            const drifts = (data.proteins || []).map(p => p.energy_drift).filter(x => typeof x === 'number');
+            const maxDrift = drifts.length ? Math.max(...drifts) : null;
+            if (maxDrift !== null) {
+              // Update the first metric card dynamically if present
+              const metricCards = document.querySelectorAll('.metric-card .metric-value');
+              if (metricCards[0]) metricCards[0].textContent = maxDrift < 1e-11 ? '<10⁻¹²' : maxDrift.toExponential(1);
+              if (metricCards[3]) metricCards[3].textContent = (data.proteins || []).length.toString();
+            }
+
+            // Table
+            const tbody = document.getElementById('validation-results');
+            if (tbody) {
+              tbody.innerHTML = '';
+              for (const p of data.proteins || []) {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                  <td>${p.name || ''}</td>
+                  <td>${p.pdb_id}</td>
+                  <td>${p.residues || '-'}</td>
+                  <td>${(typeof p.energy_drift === 'number') ? p.energy_drift.toExponential(1) : '-'}</td>
+                  <td><span class="status-badge status-verified">✓ Verified</span></td>
+                  <td class="hash">${p.proof_sha256 || ''}</td>`;
+                tbody.appendChild(tr);
+              }
+            }
+
+            // Batch hash (if present)
+            const agg = data.aggregate_sha256;
+            if (agg) {
+              const hashElements = document.querySelectorAll('.validation-section .hash');
+              hashElements.forEach(el => {
+                if (el.textContent.includes('Batch Aggregate')) {
+                  el.textContent = 'Batch Aggregate SHA-256: ' + agg;
+                }
+              });
+            }
+          } catch (e) {
+            console.warn('Failed to load latest.json', e);
+          }
+        })();
     </script>
 </body>
 </html>

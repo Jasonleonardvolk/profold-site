@@ -1,0 +1,16 @@
+Subject: Zero drift in discrete systems (impossible for 60 years) - Patent pending
+
+We've built a physics-grade engine that achieves machine-precision conservation (ΔH≈1e-16) with live topology morphing and bit-exact replay. Baseline RNN drift is ~97.6%. Ours is 0.0%.
+
+Artifacts (public):
+• Paper (PDF): https://invariant.pro/papers/Zero_Drift_Neural_Computation.pdf
+• Proof JSON: https://invariant.pro/proof/canonical_run_proof.json
+• Figures: https://invariant.pro/validation/
+
+We are gating the full ProofKit and procedures under NDA for validation partners.
+
+If you want to verify invariants with your own team, reply "NDA" and a contact email.
+
+- Jason Volk
+Patent Pending - U.S. Provisional 63/873,397
+jason@invariant.pro
