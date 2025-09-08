@@ -1,0 +1,12 @@
+# invariant.pro robots.txt
+User-agent: *
+Allow: /
+
+# Protect IP disclosure (still accessible but not crawled)
+User-agent: *
+Disallow: /.proof-priority/
+Disallow: /.timestamp
+
+# Allow verification bots if needed
+User-agent: Wayback Machine
+Allow: /.proof-priority/

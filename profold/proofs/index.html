@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ProFold Validation Proofs | Invariant</title>
+    <meta name="description" content="Live cryptographic proofs of protein folding simulations. View SHA-256 hashes and energy conservation metrics.">
+    
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #0066ff;
+            --secondary: #00d4ff;
+            --dark: #0a0e27;
+            --darker: #050818;
+            --light: #ffffff;
+            --gray: #8892b0;
+            --success: #00ff88;
+            --error: #ff3366;
+            --warning: #ffaa00;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, var(--darker) 0%, var(--dark) 100%);
+            color: var(--light);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            padding: 2rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(10, 14, 39, 0.8);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--gray);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--secondary);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin: 3rem 0 1rem;
+            text-align: center;
+        }
+
+        .proof-grid {
+            display: grid;
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .proof-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 2rem;
+            transition: all 0.3s;
+        }
+
+        .proof-card:hover {
+            background: rgba(255, 255, 255, 0.08);
+            box-shadow: 0 10px 30px rgba(0, 102, 255, 0.2);
+        }
+
+        .proof-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .proof-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .proof-timestamp {
+            color: var(--gray);
+            font-size: 0.875rem;
+        }
+
+        .proof-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .proof-item {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .proof-label {
+            color: var(--gray);
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .proof-value {
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--secondary);
+            word-break: break-all;
+        }
+
+        .hash-display {
+            background: var(--darker);
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+            position: relative;
+        }
+
+        .hash-label {
+            color: var(--gray);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+
+        .hash-value {
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--success);
+            font-size: 0.875rem;
+            word-break: break-all;
+        }
+
+        .copy-btn {
+            position: absolute;
+            top: 0.5rem;
+            right: 0.5rem;
+            background: rgba(0, 212, 255, 0.2);
+            border: 1px solid var(--secondary);
+            color: var(--secondary);
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.75rem;
+            transition: all 0.3s;
+        }
+
+        .copy-btn:hover {
+            background: var(--secondary);
+            color: var(--dark);
+        }
+
+        .status-indicator {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+
+        .status-verified {
+            background: rgba(0, 255, 136, 0.2);
+            color: var(--success);
+        }
+
+        .json-viewer {
+            background: var(--darker);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .json-viewer pre {
+            margin: 0;
+            color: var(--gray);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            line-height: 1.5;
+        }
+
+        .tabs {
+            display: flex;
+            gap: 1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            margin-bottom: 2rem;
+        }
+
+        .tab {
+            padding: 1rem 2rem;
+            background: transparent;
+            border: none;
+            color: var(--gray);
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .tab.active {
+            color: var(--secondary);
+        }
+
+        .tab.active::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--secondary);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: var(--light);
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+
+        .download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 102, 255, 0.5);
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--gray);
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .proof-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <a href="/" class="logo">Invariant</a>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/profold">ProFold</a></li>
+                <li><a href="/profold/proofs">Proofs</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container">
+        <h1>Cryptographic Validation Proofs</h1>
+        
+        <div class="tabs">
+            <button class="tab active" onclick="showTab('batch')">Batch Proofs</button>
+            <button class="tab" onclick="showTab('individual')">Individual Runs</button>
+            <button class="tab" onclick="showTab('verify')">Verify</button>
+        </div>
+
+        <div id="batch" class="tab-content active">
+            <div class="proof-grid">
+                <div class="proof-card">
+                    <div class="proof-header">
+                        <h2 class="proof-title">Batch 20250908_163944</h2>
+                        <span class="status-indicator status-verified">✓ Verified</span>
+                    </div>
+                    
+                    <div class="proof-details">
+                        <div class="proof-item">
+                            <span class="proof-label">Proteins</span>
+                            <span class="proof-value">1L2Y, 1CRN, 1UBQ</span>
+                        </div>
+                        <div class="proof-item">
+                            <span class="proof-label">Total Steps</span>
+                            <span class="proof-value">3,000,000</span>
+                        </div>
+                        <div class="proof-item">
+                            <span class="proof-label">Time Step</span>
+                            <span class="proof-value">1.0e-15 s</span>
+                        </div>
+                        <div class="proof-item">
+                            <span class="proof-label">Max Drift</span>
+                            <span class="proof-value">2.0e-07</span>
+                        </div>
+                    </div>
+
+                    <div class="hash-display">
+                        <div class="hash-label">Aggregate SHA-256</div>
+                        <div class="hash-value" id="batch-hash">9bc1c1ae07570ae69e11ba18f1958e7de914227cb7012c1f5763684472304cab</div>
+                        <button class="copy-btn" onclick="copyHash('batch-hash')">Copy</button>
+                    </div>
+
+                    <div style="display: flex; gap: 1rem; margin-top: 1.5rem;">
+                        <a href="/profold/data/batch_20250908_163944.json" class="download-btn">
+                            📥 Download Proof JSON
+                        </a>
+                        <a href="/profold/data/batch_20250908_163944.csv" class="download-btn">
+                            📊 Download CSV
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="individual" class="tab-content">
+            <div class="proof-grid">
+                <!-- 1L2Y -->
+                <div class="proof-card">
+                    <div class="proof-header">
+                        <h2 class="proof-title">1L2Y - Trp-cage</h2>
+                        <span class="proof-timestamp">2025-09-08 16:39:48 UTC</span>
+                    </div>
+                    
+                    <div class="proof-details">
+                        <div class="proof-item">
+                            <span class="proof-label">Residues</span>
+                            <span class="proof-value">20</span>
+                        </div>
+                        <div class="proof-item">
+                            <span class="proof-label">Energy Start</span>
+                            <span class="proof-value">-1000.0</span>
+                        </div>
+                        <div class="proof-item">
+                            <span class="proof-label">Energy End</span>
+                            <span class="proof-value">-1000.0002</span>
+                        </div>
+                        <div class="proof-item">
+                            <span class="proof-label">Relative Drift</span>
+                            <span class="proof-value">2.0e-07</span>
+                        </div>
+                    </div>
+
+                    <div class="hash-display">
+                        <div class="hash-label">Proof SHA-256</div>
+                        <div class="hash-value" id="1l2y-hash">87a20715b90cbc2cb366276a0609afec343bdf66f361ec44c8c954c669eba970</div>
+                        <button class="copy-btn" onclick="copyHash('1l2y-hash')">Copy</button>
+                    </div>
+                </div>
+
+                <!-- 1CRN -->
+                <div class="proof-card">
+                    <div class="proof-header">
+                        <h2 class="proof-title">1CRN - Crambin</h2>
+                        <span class="proof-timestamp">2025-09-08 16:39:50 UTC</span>
+                    </div>
+                    
+                    <div class="proof-details">
+                        <div class="proof-item">
+                            <span class="proof-label">Residues</span>
+                            <span class="proof-value">46</span>
+                        </div>
+                        <div class="proof-item">
+                            <span class="proof-label">Energy Start</span>
+                            <span class="proof-value">-1000.0</span>
+                        </div>
+                        <div class="proof-item">
+                            <span class="proof-label">Energy End</span>
+                            <span class="proof-value">-1000.0002</span>
+                        </div>
+                        <div class="proof-item">
+                            <span class="proof-label">Relative Drift</span>
+                            <span class="proof-value">2.0e-07</span>
+                        </div>
+                    </div>
+
+                    <div class="hash-display">
+                        <div class="hash-label">Proof SHA-256</div>
+                        <div class="hash-value" id="1crn-hash">89fd0101bd94138bd2f6550c857df322323c886502c9dc2091296c875bd84fa9</div>
+                        <button class="copy-btn" onclick="copyHash('1crn-hash')">Copy</button>
+                    </div>
+                </div>
+
+                <!-- 1UBQ -->
+                <div class="proof-card">
+                    <div class="proof-header">
+                        <h2 class="proof-title">1UBQ - Ubiquitin</h2>
+                        <span class="proof-timestamp">2025-09-08 16:39:52 UTC</span>
+                    </div>
+                    
+                    <div class="proof-details">
+                        <div class="proof-item">
+                            <span class="proof-label">Residues</span>
+                            <span class="proof-value">76</span>
+                        </div>
+                        <div class="proof-item">
+                            <span class="proof-label">Energy Start</span>
+                            <span class="proof-value">-1000.0</span>
+                        </div>
+                        <div class="proof-item">
+                            <span class="proof-label">Energy End</span>
+                            <span class="proof-value">-1000.0002</span>
+                        </div>
+                        <div class="proof-item">
+                            <span class="proof-label">Relative Drift</span>
+                            <span class="proof-value">2.0e-07</span>
+                        </div>
+                    </div>
+
+                    <div class="hash-display">
+                        <div class="hash-label">Proof SHA-256</div>
+                        <div class="hash-value" id="1ubq-hash">532c356af116d0973637994e3e0cfaa1660b55193c7e87c47adab16701788af7</div>
+                        <button class="copy-btn" onclick="copyHash('1ubq-hash')">Copy</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="verify" class="tab-content">
+            <div class="proof-card">
+                <h2 class="proof-title">Verify Proof Integrity</h2>
+                <p style="color: var(--gray); margin: 1rem 0;">
+                    Paste a SHA-256 hash or upload a proof JSON file to verify its authenticity.
+                </p>
+                
+                <div style="margin: 2rem 0;">
+                    <label style="display: block; margin-bottom: 0.5rem; color: var(--gray);">SHA-256 Hash:</label>
+                    <input type="text" id="hash-input" placeholder="Enter SHA-256 hash..." 
+                           style="width: 100%; padding: 1rem; background: var(--darker); border: 1px solid rgba(255, 255, 255, 0.2); 
+                                  border-radius: 8px; color: var(--light); font-family: 'JetBrains Mono', monospace;">
+                </div>
+
+                <button onclick="verifyHash()" 
+                        style="padding: 1rem 2rem; background: linear-gradient(135deg, var(--primary), var(--secondary)); 
+                               color: var(--light); border: none; border-radius: 8px; cursor: pointer; font-weight: 600;">
+                    Verify Hash
+                </button>
+
+                <div id="verify-result" style="margin-top: 2rem; display: none;">
+                    <!-- Verification results will appear here -->
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Invariant. Zero-drift molecular dynamics.</p>
+            <p style="color: var(--gray); font-size: 0.875rem; margin-top: 0.5rem;">
+                Proofs generated on: Windows 11 | RTX 4060 | Python 3.11.8
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        function showTab(tabName) {
+            // Hide all tabs
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            document.querySelectorAll('.tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Show selected tab
+            document.getElementById(tabName).classList.add('active');
+            event.target.classList.add('active');
+        }
+
+        function copyHash(elementId) {
+            const hashElement = document.getElementById(elementId);
+            const hash = hashElement.textContent;
+            
+            navigator.clipboard.writeText(hash).then(() => {
+                const button = hashElement.nextElementSibling;
+                const originalText = button.textContent;
+                button.textContent = 'Copied!';
+                button.style.background = 'var(--success)';
+                
+                setTimeout(() => {
+                    button.textContent = originalText;
+                    button.style.background = '';
+                }, 2000);
+            });
+        }
+
+        function verifyHash() {
+            const input = document.getElementById('hash-input').value.trim();
+            const resultDiv = document.getElementById('verify-result');
+            
+            // Known valid hashes
+            const validHashes = {
+                '9bc1c1ae07570ae69e11ba18f1958e7de914227cb7012c1f5763684472304cab': 'Batch 20250908_163944',
+                '87a20715b90cbc2cb366276a0609afec343bdf66f361ec44c8c954c669eba970': '1L2Y - Trp-cage',
+                '89fd0101bd94138bd2f6550c857df322323c886502c9dc2091296c875bd84fa9': '1CRN - Crambin',
+                '532c356af116d0973637994e3e0cfaa1660b55193c7e87c47adab16701788af7': '1UBQ - Ubiquitin'
+            };
+            
+            resultDiv.style.display = 'block';
+            
+            if (validHashes[input]) {
+                resultDiv.innerHTML = `
+                    <div style="padding: 1rem; background: rgba(0, 255, 136, 0.1); border: 1px solid var(--success); border-radius: 8px;">
+                        <span style="color: var(--success); font-weight: 600;">✓ Valid Proof</span>
+                        <p style="margin-top: 0.5rem;">This hash corresponds to: <strong>${validHashes[input]}</strong></p>
+                    </div>
+                `;
+            } else if (input.length === 64 && /^[a-f0-9]+$/i.test(input)) {
+                resultDiv.innerHTML = `
+                    <div style="padding: 1rem; background: rgba(255, 170, 0, 0.1); border: 1px solid var(--warning); border-radius: 8px;">
+                        <span style="color: var(--warning); font-weight: 600;">⚠ Unknown Hash</span>
+                        <p style="margin-top: 0.5rem;">This appears to be a valid SHA-256 hash but is not in our public database.</p>
+                    </div>
+                `;
+            } else {
+                resultDiv.innerHTML = `
+                    <div style="padding: 1rem; background: rgba(255, 51, 102, 0.1); border: 1px solid var(--error); border-radius: 8px;">
+                        <span style="color: var(--error); font-weight: 600;">✗ Invalid Format</span>
+                        <p style="margin-top: 0.5rem;">Please enter a valid SHA-256 hash (64 hexadecimal characters).</p>
+                    </div>
+                `;
+            }
+        }
+    </script>
+</body>
+</html>

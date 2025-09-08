@@ -1,0 +1,3 @@
+"pdb_id","out_dir","energy_start","energy_end","energy_relative_drift","replay_identical","energy_csv","traj_bin","proof_file","proof_aggregate_sha256"
+"6LU7","D:\Dev\kha\bio\folding\out\6LU7","-1000","-1000.0002","1.999999999497959E-07","False","D:\Dev\kha\bio\folding\out\6LU7\energy.csv","D:\Dev\kha\bio\folding\out\6LU7\traj.bin","D:\Dev\kha\bio\folding\out\6LU7\proof_20250908_164042.json","a99ce60c37ce5798b1cb333b85ad59c0bf2d701c1334f3898e272b69206c1f09"
+"6M0J","D:\Dev\kha\bio\folding\out\6M0J","-1000","-1000.0002","1.999999999497959E-07","False","D:\Dev\kha\bio\folding\out\6M0J\energy.csv","D:\Dev\kha\bio\folding\out\6M0J\traj.bin","D:\Dev\kha\bio\folding\out\6M0J\proof_20250908_164044.json","0c21fc0368d58d8df1a66e6924d0648ec76c1969fe5b5a1a4bde157cc6a3f865"

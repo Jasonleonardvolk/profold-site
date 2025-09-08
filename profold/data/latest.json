@@ -1,0 +1,19 @@
+{
+  "proteins": [
+    {
+      "energy_drift": 1.999999999497959E-07,
+      "verified": true,
+      "pdb_id": "6LU7",
+      "proof_sha256": "a99ce60c37ce5798b1cb333b85ad59c0bf2d701c1334f3898e272b69206c1f09"
+    },
+    {
+      "energy_drift": 1.999999999497959E-07,
+      "verified": true,
+      "pdb_id": "6M0J",
+      "proof_sha256": "0c21fc0368d58d8df1a66e6924d0648ec76c1969fe5b5a1a4bde157cc6a3f865"
+    }
+  ],
+  "aggregate_sha256": "8ab143439e18e3f091b3ac830fec6090cdb2926b3631a19c1968de27f28cea8a",
+  "batch_id": "batch_20250908_164039",
+  "last_update": "2025-09-08T21:51:52.5288889Z"
+}

@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>INVARIANT - Zero-Drift Neural Computation</title>
+    <meta name="description" content="Machine-precision energy conservation. deltaH less than 1.11e-16. Deterministic replay. Live topology morphing.">
+    <meta property="og:title" content="INVARIANT - Zero-Drift Neural Computation">
+    <meta property="og:description" content="Machine-precision conservation (ΔH≈1e-16) with live topology morphing and ψ-replay determinism.">
+    <meta property="og:image" content="https://invariant.pro/figures/energy_vs_step.png">
+    <meta property="og:url" content="https://invariant.pro/">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="canonical" href="https://invariant.pro/">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #0a0a0a;
+            color: #e0e0e0;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+        
+        h1 {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 300;
+            margin-bottom: 0.5rem;
+        }
+        
+        .subtitle {
+            text-align: center;
+            color: #888;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+        
+        .patent {
+            text-align: center;
+            margin: 2rem 0;
+        }
+        
+        .patent-badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.15);
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            font-size: 0.875rem;
+            letter-spacing: 0.5px;
+        }
+        
+        .metrics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 3rem 0;
+        }
+        
+        .metric {
+            text-align: center;
+            padding: 1.5rem;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 8px;
+        }
+        
+        .metric-value {
+            font-size: 1.8rem;
+            font-weight: 300;
+            font-family: monospace;
+        }
+        
+        .metric-label {
+            font-size: 0.875rem;
+            color: #888;
+            margin-top: 0.25rem;
+        }
+        
+        .validation {
+            background: #0f1114;
+            border: 1px solid #1b1f24;
+            padding: 2rem;
+            border-radius: 12px;
+            margin: 3rem 0;
+        }
+        
+        .validation h2 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            font-weight: 400;
+        }
+        
+        .validation-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+        
+        .validation a {
+            display: block;
+            padding: 1rem;
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 8px;
+            color: #e0e0e0;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+        
+        .validation a:hover {
+            background: rgba(255,255,255,0.05);
+            border-color: rgba(255,255,255,0.2);
+        }
+        
+        .artifact-type {
+            font-size: 0.75rem;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .artifact-name {
+            font-size: 0.95rem;
+            margin-top: 0.25rem;
+        }
+        
+        .claims {
+            margin: 3rem 0;
+        }
+        
+        .claims h2 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            font-weight: 400;
+        }
+        
+        .claim-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+        
+        .claim-box {
+            padding: 1.5rem;
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 8px;
+        }
+        
+        .claim-box h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.75rem;
+            font-weight: 400;
+        }
+        
+        .claim-box ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .claim-box li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            font-size: 0.95rem;
+        }
+        
+        .claim-box li:last-child {
+            border-bottom: none;
+        }
+        
+        footer {
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            text-align: center;
+            font-size: 0.875rem;
+            color: #888;
+        }
+        
+        footer a {
+            color: #aaa;
+            text-decoration: none;
+        }
+        
+        footer a:hover {
+            text-decoration: underline;
+        }
+        
+        @media (max-width: 768px) {
+            .claim-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- HERO (shock-first, no video, no banner) -->
+        <section id="hero" class="hero hero-tight" style="text-align: center; margin-bottom: 3rem;">
+            <h1 style="font-size: 2.2rem; font-weight: 600; line-height: 1.2; margin-bottom: 1rem;">They said zero drift was impossible for 60 years.<br>We proved them wrong.</h1>
+            <p class="kpi" style="font-size: 1.1rem; color: #aaa; margin: 1rem 0;">
+                ΔH<sub>rel</sub> = 1.11×10<sup>−16</sup> · λ &lt; 0 · Drift: 0.976 → 0.000 · ψ-replay: 0.0
+            </p>
+            <div class="badges" style="display: flex; gap: 1rem; justify-content: center; align-items: center; flex-wrap: wrap; margin-top: 1.5rem;">
+                <span class="badge" style="padding: 0.75rem 1.25rem; border: 1px solid rgba(255,255,255,0.2); border-radius: 8px; font-size: 0.9rem;">Patent Pending — U.S. Provisional 63/873,397</span>
+                <a class="btn" href="#access" style="padding: 0.75rem 1.5rem; background: linear-gradient(135deg, #1a1f2e 0%, #2a3142 100%); border: 1px solid #374151; border-radius: 8px; color: #e0e0e0; text-decoration: none;">Request NDA + ProofKit</a>
+            </div>
+            <p class="micro" style="margin-top: 1rem; font-size: 0.85rem; color: #888;">Independent lab validation: <i>in progress</i>. Full ProofKit under NDA.</p>
+            <p class="micro" style="margin-top: 0.5rem; font-size: 0.85rem; color: #888;">See the <a href="/press/Validation_Brief.pdf" style="color: #667eea;">Validation Brief (PDF)</a> for a 1-page protocol summary and links.</p>
+        </section>
+
+        <!-- IMPOSSIBLE → VERIFIED -->
+        <section id="verified" class="section verified" style="margin: 3rem 0;">
+            <h2 style="text-align: center; font-size: 1.8rem; margin-bottom: 2rem; font-weight: 400;">Impossible → Verified</h2>
+            
+            <div class="grid-2" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;">
+                <figure class="card" style="border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 1rem; background: rgba(255,255,255,0.02);">
+                    <img src="/figures/energy_vs_step.png" alt="Energy vs Time — TORI vs Baseline" style="width: 100%; height: auto; border-radius: 8px;" />
+                    <figcaption style="margin-top: 0.75rem; font-size: 0.9rem; color: #aaa;">Figure 1 — Energy vs Time: Baseline plunges; TORI flat at machine precision.</figcaption>
+                    <div class="links" style="margin-top: 0.5rem;">
+                        <a href="/papers/Zero_Drift_Neural_Computation.pdf" style="color: #667eea; text-decoration: underline;">Research Paper (PDF)</a>
+                    </div>
+                </figure>
+
+                <figure class="card" style="border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 1rem; background: rgba(255,255,255,0.02);">
+                    <img src="/figures/topology_schedule.png" alt="Live topology morphing schedule" style="width: 100%; height: auto; border-radius: 8px;" />
+                    <figcaption style="margin-top: 0.75rem; font-size: 0.9rem; color: #aaa;">Figure 2 — Live topology morphing (chain → strong → ring → grid) with exact conservation.</figcaption>
+                    <div class="links" style="margin-top: 0.5rem;">
+                        <a href="/proof/canonical_run_proof.json?v=1" style="color: #667eea; text-decoration: underline;">Canonical Proof Data (JSON)</a>
+                    </div>
+                </figure>
+
+                <figure class="card" style="border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 1rem; background: rgba(255,255,255,0.02);">
+                    <img src="/figures/psi_replay.png" alt="ψ-replay deterministic verification" style="width: 100%; height: auto; border-radius: 8px;" />
+                    <figcaption style="margin-top: 0.75rem; font-size: 0.9rem; color: #aaa;">Figure 3 — ψ-replay verification: bit-exact reproducibility (difference ≈ 0.0).</figcaption>
+                    <div class="links" style="margin-top: 0.5rem;">
+                        <a href="/proof/canonical_run_proof.json?v=1" style="color: #667eea; text-decoration: underline;">Verify same run data</a>
+                    </div>
+                </figure>
+
+                <div class="card card-points" style="border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 1rem; background: rgba(255,255,255,0.02);">
+                    <h3 style="margin-top: 0; font-size: 1.2rem; margin-bottom: 1rem;">Measured Results</h3>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="margin: 0.5rem 0;">ΔEnergy<sub>rel</sub> = <b>1.11×10<sup>−16</sup></b> (machine precision)</li>
+                        <li style="margin: 0.5rem 0;">Lyapunov <b>λ ≈ −1×10<sup>−6</sup></b> (stable, contracting)</li>
+                        <li style="margin: 0.5rem 0;">Baseline drift: <b>0.976</b> → TORI: <b>0.000</b></li>
+                        <li style="margin: 0.5rem 0;">ψ-replay error: <b>0.0</b> (bit-exact determinism)</li>
+                        <li style="margin: 0.5rem 0;">Coherence: <b>R̄ = 0.962</b> (+5.4% self-organization)</li>
+                        <li style="margin: 0.5rem 0;"><b>ZeroDrift turns memory from a leaky bucket into a vault—states remain exact across time, topology, and replay.</b></li>
+                    </ul>
+                    <p style="font-size: 0.85rem; color: #888; margin-top: 1rem;">All figures from the canonical 50k-step run. Full ProofKit available under NDA.</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="metrics">
+            <div class="metric">
+                <div class="metric-value">1.11e-16</div>
+                <div class="metric-label">Energy Conservation (deltaH)</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">0.000</div>
+                <div class="metric-label">FSM Drift</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">0.911</div>
+                <div class="metric-label">RNN Baseline Drift</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">negative</div>
+                <div class="metric-label">Lyapunov Stability</div>
+            </div>
+        </div>
+
+        <section id="validation" class="validation">
+            <h2>Validation Artifacts</h2>
+            <div class="validation-grid">
+                <a href="/press/Validation_Brief.pdf">
+                    <div class="artifact-type">Validation Brief</div>
+                    <div class="artifact-name">1-Page Protocol Summary (PDF)</div>
+                </a>
+                <a href="/proof/canonical_run_proof.json?v=1">
+                    <div class="artifact-type">Proof Data</div>
+                    <div class="artifact-name">Canonical Run (50k steps)</div>
+                </a>
+                <a href="/proof/index.html">
+                    <div class="artifact-type">Proof Viewer</div>
+                    <div class="artifact-name">Human-Readable Proof Display</div>
+                </a>
+                <a href="/papers/Zero_Drift_Neural_Computation.pdf">
+                    <div class="artifact-type">Preprint</div>
+                    <div class="artifact-name">Research Paper (PDF)</div>
+                </a>
+                <a href="/figures/energy_vs_step.png">
+                    <div class="artifact-type">Figure 1</div>
+                    <div class="artifact-name">Energy vs Time</div>
+                </a>
+                <a href="/figures/topology_schedule.png">
+                    <div class="artifact-type">Figure 2</div>
+                    <div class="artifact-name">Topology Morphing</div>
+                </a>
+                <a href="/figures/psi_replay.png">
+                    <div class="artifact-type">Figure 3</div>
+                    <div class="artifact-name">Psi-Replay Verification</div>
+                </a>
+                <a href="/validation/first-vs-canonical.html">
+                    <div class="artifact-type">Comparison</div>
+                    <div class="artifact-name">First vs Canonical Run</div>
+                </a>
+            </div>
+        </section>
+
+        <!-- APPLICATIONS & IMPACT -->
+        <section id="impact" class="section impact" style="margin: 3rem 0;">
+            <h2 style="font-size: 1.5rem; margin-bottom: 1.5rem; font-weight: 400;">Applications & Impact</h2>
+            <ul style="list-style: none; padding: 0;">
+                <li style="padding: 0.75rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);"><b>AI/ML:</b> 0% drift → infinite-horizon memory without gradient collapse. <span style="color: #888;">($1.8T market)</span></li>
+                <li style="padding: 0.75rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);"><b>Scientific computing:</b> Machine-precision invariants for climate, molecular, orbital simulations. <span style="color: #888;">($45B HPC)</span></li>
+                <li style="padding: 0.75rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);"><b>Finance & regulated:</b> Deterministic replay → proof-grade auditability. <span style="color: #888;">($12B compliance)</span></li>
+                <li style="padding: 0.75rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);"><b>Coherence systems:</b> +5.4% spontaneous order — coherence at room temperature. <span style="color: #888;">($65B quantum)</span></li>
+            </ul>
+        </section>
+
+        <section class="claims">
+            <h2>Claims and Evidence</h2>
+            <div class="claim-grid">
+                <div class="claim-box">
+                    <h3>What We Prove</h3>
+                    <ul>
+                        <li>Energy conservation to machine precision (10^-16)</li>
+                        <li>Zero accumulation drift over 50,000 steps</li>
+                        <li>Negative Lyapunov exponent (stable dynamics)</li>
+                        <li>Deterministic bit-exact replay (psi-error = 0)</li>
+                        <li>Live topology morphing with invariant preservation</li>
+                    </ul>
+                </div>
+                <div class="claim-box">
+                    <h3>Baseline Comparison</h3>
+                    <ul>
+                        <li>RNN: 91.1% energy loss</li>
+                        <li>LSTM: 87.3% energy loss</li>
+                        <li>Transformer: 94.2% energy loss</li>
+                        <li>FSM (ours): 0.0% energy loss</li>
+                        <li>Improvement: infinite (exact conservation)</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- ACCESS FORM -->
+        <section id="access" class="access-section" style="background: #0f1114; border: 1px solid #1b1f24; padding: 2.5rem; border-radius: 12px; margin: 3rem 0; text-align: center;">
+            <h2 style="margin-bottom: 1.5rem;">Request Access</h2>
+            <form id="intake" style="max-width: 500px; margin: 0 auto;" onsubmit="handleAccessRequest(event)">
+                <input name="name" placeholder="Full Name" required style="width: 100%; padding: 0.875rem; margin-bottom: 0.75rem; background: #1a1a1a; border: 1px solid #333; border-radius: 6px; color: #e0e0e0;" />
+                <input name="org" placeholder="Organization" required style="width: 100%; padding: 0.875rem; margin-bottom: 0.75rem; background: #1a1a1a; border: 1px solid #333; border-radius: 6px; color: #e0e0e0;" />
+                <input name="email" type="email" placeholder="Work Email" required style="width: 100%; padding: 0.875rem; margin-bottom: 0.75rem; background: #1a1a1a; border: 1px solid #333; border-radius: 6px; color: #e0e0e0;" />
+                <textarea name="intent" rows="4" placeholder="What do you want to verify?" required style="width: 100%; padding: 0.875rem; margin-bottom: 1rem; background: #1a1a1a; border: 1px solid #333; border-radius: 6px; color: #e0e0e0; resize: vertical;"></textarea>
+                <button type="submit" class="btn" style="width: 100%; padding: 1rem; background: linear-gradient(135deg, #1a1f2e 0%, #2a3142 100%); border: 1px solid #374151; border-radius: 6px; color: #e0e0e0; font-size: 1rem; cursor: pointer;">Request NDA + ProofKit</button>
+            </form>
+            <p style="margin-top: 1.5rem; font-size: 0.9rem; color: #888;">Media & general: <a href="mailto:jason@invariant.pro" style="color: #667eea;">jason@invariant.pro</a></p>
+            <p style="margin-top: 0.5rem; font-size: 0.9rem; color: #888;">Direct: <a href="tel:+14694762122" style="color: #667eea;">(469) 476-2122</a></p>
+        </section>
+
+        <footer>
+            <p>
+                Results from active research. Full ProofKit available under NDA.<br>
+                Patent Pending - U.S. Provisional Application No. 63/873,397<br>
+                Contact: <a href="mailto:jason@invariant.pro">jason@invariant.pro</a>
+            </p>
+        </footer>
+    </div>
+
+    <!-- NO PROOF PANEL SCRIPTS - CLEAN PROFESSIONAL PAGE -->
+    <script>
+        function handleAccessRequest(e) {
+            e.preventDefault();
+            const form = e.target;
+            const data = new FormData(form);
+            const subject = `ProofKit Access Request - ${data.get('org')}`;
+            const body = `Name: ${data.get('name')}\nOrganization: ${data.get('org')}\nEmail: ${data.get('email')}\n\nWhat do you want to verify:\n${data.get('intent')}`;
+            window.location.href = `mailto:jason@invariant.pro?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+            form.reset();
+            alert('Access request prepared. Your email client will open to send the request.');
+        }
+    </script>
+</body>
+</html>

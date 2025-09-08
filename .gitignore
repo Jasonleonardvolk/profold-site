@@ -1,0 +1,21 @@
+# Exclude proprietary code
+*.exe
+*.dll
+*.bin
+*.pyc
+__pycache__/
+.env
+.venv/
+
+# Exclude sensitive data
+*/private/
+*/sensitive/
+*/proprietary/
+
+# Exclude large files
+*.traj
+*.pdb
+*.zip
+*.tar.gz
+
+# Keep only website files
