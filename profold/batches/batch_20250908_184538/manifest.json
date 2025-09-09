@@ -1,0 +1,40 @@
+{
+  "published_utc": "2025-09-08T23:46:29.8458589Z",
+  "include_per_target": true,
+  "files": [
+    {
+      "path": "D:\\Dev\\kha\\press\\domains\\invariant.pro\\site\\profold\\batches\\batch_20250908_184538\\batch_proof.json",
+      "sha256": "1726727ECBB0CC37EFE91680C3C7C71324E9CBCABC085D2E3D12E7A150C125A8"
+    },
+    {
+      "path": "D:\\Dev\\kha\\press\\domains\\invariant.pro\\site\\profold\\batches\\batch_20250908_184538\\batch_summary.csv",
+      "sha256": "4B626521A2C441CD43A8530F794E92C045827A1CEE46228A10770C7B35FD619D"
+    },
+    {
+      "path": "D:\\Dev\\kha\\press\\domains\\invariant.pro\\site\\profold\\batches\\batch_20250908_184538\\1L2Y\\proof_20250908_184552.json",
+      "sha256": "480A1BC36B426A2984F25C2EEC3BAC01BFEC593D36B82B9F02AC1EB0123E6113"
+    },
+    {
+      "path": "D:\\Dev\\kha\\press\\domains\\invariant.pro\\site\\profold\\batches\\batch_20250908_184538\\1L2Y\\metrics.json",
+      "sha256": "EE442EA0A88AD68D4CAF942DAACA5A4D16BCB6A04ADBB8F45B83AEE3E6B1A4AC"
+    },
+    {
+      "path": "D:\\Dev\\kha\\press\\domains\\invariant.pro\\site\\profold\\batches\\batch_20250908_184538\\1CRN\\proof_20250908_184557.json",
+      "sha256": "35962DAD16EF0B1588D55E466ACB2AF0007B7844090AD582E8C815DA233A6648"
+    },
+    {
+      "path": "D:\\Dev\\kha\\press\\domains\\invariant.pro\\site\\profold\\batches\\batch_20250908_184538\\1CRN\\metrics.json",
+      "sha256": "780B022456EC9A14A48C37FE0669F8DF1A821CAC39A829A5E9108A44D6C04593"
+    },
+    {
+      "path": "D:\\Dev\\kha\\press\\domains\\invariant.pro\\site\\profold\\batches\\batch_20250908_184538\\1UBQ\\proof_20250908_184602.json",
+      "sha256": "51F653CDCD847119E1017046E05506614BBA2DAB6101A9E196DFB393B3057306"
+    },
+    {
+      "path": "D:\\Dev\\kha\\press\\domains\\invariant.pro\\site\\profold\\batches\\batch_20250908_184538\\1UBQ\\metrics.json",
+      "sha256": "2D448D28208C53E81DBFDB41B3BBF425D69E79567DBF15FF9B7081B8EE779F12"
+    }
+  ],
+  "site_dir": "D:\\Dev\\kha\\press\\domains\\invariant.pro\\site\\profold\\batches\\batch_20250908_184538",
+  "batch_dir": "D:\\Dev\\kha\\bio\\folding\\out\\batch_20250908_184538"
+}

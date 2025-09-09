@@ -1,0 +1,15 @@
+{
+  "energy_sha256": "8AA27186607381861022E325082DE14B6C4224AB8CF356A2A13773A6703088FC",
+  "energy_end": -1000.0002,
+  "pdb_path": "D:\\Dev\\kha\\bio\\folding\\inputs\\pdb\\1UBQ.pdb",
+  "dt": 1E-15,
+  "wallclock_ms": 1015.197,
+  "generated_utc": "2025-09-08T23:46:01.2806641Z",
+  "steps": 1000000,
+  "traj_sha256": "47C5303D1448AF25E48AEC635550258868E33548924076903E07AD514AF73379",
+  "traj_bin": "D:\\Dev\\kha\\bio\\folding\\out\\1UBQ\\traj.bin",
+  "energy_start": -1000.0,
+  "energy_csv": "D:\\Dev\\kha\\bio\\folding\\out\\1UBQ\\energy.csv",
+  "energy_relative_drift": 1.999999999497959E-07,
+  "replay_identical": true
+}

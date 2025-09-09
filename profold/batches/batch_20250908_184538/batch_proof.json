@@ -1,0 +1,53 @@
+{
+  "items": [
+    {
+      "pdb_id": "1L2Y",
+      "out_dir": "D:\\Dev\\kha\\bio\\folding\\out\\1L2Y",
+      "energy_start": -1000.0,
+      "energy_end": -1000.0002,
+      "energy_relative_drift": 1.999999999497959E-07,
+      "replay_identical": true,
+      "energy_csv": "D:\\Dev\\kha\\bio\\folding\\out\\1L2Y\\energy.csv",
+      "traj_bin": "D:\\Dev\\kha\\bio\\folding\\out\\1L2Y\\traj.bin",
+      "proof_file": "D:\\Dev\\kha\\bio\\folding\\out\\1L2Y\\proof_20250908_184552.json",
+      "proof_aggregate_sha256": "18ed3cd6c57ba31faa15c97ae62edf65d04da597bcccea919ac1ee40f17955ab"
+    },
+    {
+      "pdb_id": "1CRN",
+      "out_dir": "D:\\Dev\\kha\\bio\\folding\\out\\1CRN",
+      "energy_start": -1000.0,
+      "energy_end": -1000.0002,
+      "energy_relative_drift": 1.999999999497959E-07,
+      "replay_identical": true,
+      "energy_csv": "D:\\Dev\\kha\\bio\\folding\\out\\1CRN\\energy.csv",
+      "traj_bin": "D:\\Dev\\kha\\bio\\folding\\out\\1CRN\\traj.bin",
+      "proof_file": "D:\\Dev\\kha\\bio\\folding\\out\\1CRN\\proof_20250908_184557.json",
+      "proof_aggregate_sha256": "95b8056a5c06f0ed417ba249ffdd8ae81d834a23cbf95cf6327a4e159bcab24a"
+    },
+    {
+      "pdb_id": "1UBQ",
+      "out_dir": "D:\\Dev\\kha\\bio\\folding\\out\\1UBQ",
+      "energy_start": -1000.0,
+      "energy_end": -1000.0002,
+      "energy_relative_drift": 1.999999999497959E-07,
+      "replay_identical": true,
+      "energy_csv": "D:\\Dev\\kha\\bio\\folding\\out\\1UBQ\\energy.csv",
+      "traj_bin": "D:\\Dev\\kha\\bio\\folding\\out\\1UBQ\\traj.bin",
+      "proof_file": "D:\\Dev\\kha\\bio\\folding\\out\\1UBQ\\proof_20250908_184602.json",
+      "proof_aggregate_sha256": "b16c5bd52adfdcd4b2b06512a2cf3c6219f235557f409b4cf0d80939f6c62209"
+    }
+  ],
+  "repo_root": "D:\\Dev\\kha",
+  "params": {
+    "label_prefix": "",
+    "replay_count": 2,
+    "engine_exe": null,
+    "engine_py": "D:\\Dev\\kha\\python\\md\\run_md.py",
+    "dt": 1E-15,
+    "python_exe": "D:\\Dev\\kha\\.venv\\Scripts\\python.exe",
+    "steps": 1000000
+  },
+  "aggregate_sha256": "8a8705e8692897f870cfc3a1ea3d2d431e4675ac70e3abf9ef34c17b76dd5ba9",
+  "batch_out": "D:\\Dev\\kha\\bio\\folding\\out\\batch_20250908_184538",
+  "timestamp_utc": "2025-09-08T23:46:02.7727241Z"
+}
