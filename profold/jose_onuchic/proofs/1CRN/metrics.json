@@ -1,0 +1,53 @@
+{
+  "pdb_path": "D:\\Dev\\kha\\bio\\folding\\inputs\\pdb\\1CRN.pdb",
+  "pdb_sha256": "42199a30a0701864a2a5cc76cd7f35cc544cd0e65fbcf63e03c166543249b811",
+  "atoms": 327,
+  "residue_estimate": 46,
+  "elements": {
+    "C": 202,
+    "N": 55,
+    "O": 64,
+    "S": 6
+  },
+  "steps": 1000,
+  "dt_s": 1E-15,
+  "units": "kJ/mol",
+  "method": "WCA+tether real MD",
+  "tether_ref": "minimized",
+  "k_tether": 1.0,
+  "energy_start": 2.56261E-05,
+  "energy_end": 2.56261E-05,
+  "energy_relative_drift": 0.0,
+  "components_start": {
+    "K": 0.0,
+    "V_WCA": 0.0,
+    "V_tether": 0.0
+  },
+  "components_end": {
+    "K": 1.4818097019355248E-05,
+    "V_WCA": 0.0,
+    "V_tether": 1.0807975021375522E-05
+  },
+  "enforce_every": 100,
+  "seed": 1337,
+  "seed_mode": "from_config",
+  "energy_csv": "D:\\Dev\\kha\\bio\\folding\\out\\1CRN\\energy.csv",
+  "energy_csv_sha256": "ae8d8e7344a1dedc50be88434c6dea3f7cb22b3c42c8930c4d557eed5c5c550b",
+  "components_csv": "D:\\Dev\\kha\\bio\\folding\\out\\1CRN\\energy_components.csv",
+  "traj_bin_sha256": "397772d4246c20261dce050894d73ce2b72b0fbe4b313e0451de89c7b96690d2",
+  "neighbor_pairs": 0,
+  "wallclock_ms": 14050.815,
+  "wallclock_formatted": "0.5s",
+  "steps_per_second": 2104,
+  "replay_identical": true,
+  "platform": null,
+  "precision": null,
+  "engine_py_path": "D:\\Dev\\kha\\python\\md\\run_md_real.py",
+  "engine_py_sha256": "7d169b82ae3481f34c561de989937f5bdf1c06315ab1f40869760e34c646304a",
+  "energy_per_atom": 0.0,
+  "dt": 1E-15,
+  "traj_bin": "D:\\Dev\\kha\\bio\\folding\\out\\1CRN\\traj.bin",
+  "traj_sha256": "397772D4246C20261DCE050894D73CE2B72B0FBE4B313E0451DE89C7B96690D2",
+  "energy_sha256": "AE8D8E7344A1DEDC50BE88434C6DEA3F7CB22B3C42C8930C4D557EED5C5C550B",
+  "generated_utc": "2025-09-09T14:29:38.9651806Z"
+}

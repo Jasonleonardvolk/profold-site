@@ -1,0 +1,21 @@
+{
+  "units": "kJ/mol",
+  "steps": 10000,
+  "energy_csv": "D:\\Dev\\kha\\bio\\folding\\out\\1UBQ\\energy.csv",
+  "energy_end": -2756.16,
+  "replay_identical": true,
+  "traj_sha256": "6A5103A38A40B9D1A47F374BE63E70E869CA950622163ED1870067AFF53A2177",
+  "energy_start": -2756.16,
+  "energy_sha256": "A6CEF2760874CBA524770D82511570B26681BAD4C48B3F72FEFFA3A5BF051E36",
+  "energy_relative_drift": 0.0,
+  "generated_utc": "2025-09-09T11:36:03.2131879Z",
+  "pdb_path": "D:\\Dev\\kha\\bio\\folding\\inputs\\pdb\\1UBQ.pdb",
+  "wallclock_ms": 1034.054,
+  "enforce_every": 100,
+  "dt": 1E-15,
+  "traj_bin": "D:\\Dev\\kha\\bio\\folding\\out\\1UBQ\\traj.bin",
+  "atoms": 660,
+  "pdb_sha256": "D4A6812D8951CF6594E6A0763F089E35F5A80B62ACB3C117B2C5565228A7B161",
+  "energy_csv_sha256": "A6CEF2760874CBA524770D82511570B26681BAD4C48B3F72FEFFA3A5BF051E36",
+  "energy_per_atom": -4.176
+}

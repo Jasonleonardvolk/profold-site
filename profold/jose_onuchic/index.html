@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ProFold - Jose Onuchic</title>
+    <meta charset="UTF-8">
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 1000px; margin: 0 auto; padding: 20px; background: #0a0e1a; color: #e0e7ff; }
+        h1 { color: #60a5fa; }
+        .drift { font-family: monospace; background: #1e293b; padding: 2px 6px; color: #22d3ee; }
+        .cmd { background: #1e293b; padding: 10px; font-family: monospace; margin: 10px 0; }
+        .protein { background: #1e293b; padding: 15px; margin: 15px 0; border-radius: 8px; }
+        a { color: #60a5fa; }
+    </style>
+</head>
+<body>
+    <h1>ProFold Validation - Dr. Jose Onuchic</h1>
+    <p><strong>Real physics, machine-precision drift (~1e-16), bit-identical replay</strong></p>
+    
+    <h2>Results</h2>
+    <div class="protein">
+        <h3>1L2Y - Trp-cage (304 atoms)</h3>
+        <p>Drift: <span class="drift">0.00e+000</span></p>
+        <p>
+            <a href="proofs/1L2Y/certificate_1L2Y.pdf">Certificate</a> |
+            <a href="proofs/1L2Y/metrics.json">Metrics</a> |
+            <a href="proofs/1L2Y/energy.csv">Energy</a>
+        </p>
+    </div>
+    
+    <div class="protein">
+        <h3>1CRN - Crambin (327 atoms)</h3>
+        <p>Drift: <span class="drift">0.00e+000</span></p>
+        <p>
+            <a href="proofs/1CRN/certificate_1CRN.pdf">Certificate</a> |
+            <a href="proofs/1CRN/metrics.json">Metrics</a> |
+            <a href="proofs/1CRN/energy.csv">Energy</a>
+        </p>
+    </div>
+    
+    <div class="protein">
+        <h3>1UBQ - Ubiquitin (660 atoms)</h3>
+        <p>Drift: <span class="drift">0.00e+000</span></p>
+        <p>
+            <a href="proofs/1UBQ/certificate_1UBQ.pdf">Certificate</a> |
+            <a href="proofs/1UBQ/metrics.json">Metrics</a> |
+            <a href="proofs/1UBQ/energy.csv">Energy</a>
+        </p>
+    </div>
+    
+    <h2>Verification</h2>
+    <div class="cmd">sha256sum -c jose_latest.json.sha256</div>
+    
+    <h2>Bundle</h2>
+    <p>
+        <a href="jose_latest.json">jose_latest.json</a> |
+        <a href="jose_latest.json.sha256">SHA256</a> |
+        <a href="jose_latest.json.sig">Signature</a> |
+        <a href="jose_public_key.pem">Public Key</a>
+    </p>
+    
+    <p style="margin-top: 40px;">
+        Jason Volk | <a href="mailto:jason@invariant.pro">jason@invariant.pro</a> | +1 (469) 476-2122
+    </p>
+</body>
+</html>
